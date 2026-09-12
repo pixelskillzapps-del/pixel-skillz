@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="hi"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin Login — Pixel Skillz</title><link rel="stylesheet" href="/css/admin.css">
+</head><body>
+<div class="login-wrap"><div class="login">
+  <div class="logo"><span class="sq"></span> Pixel Skillz</div>
+  <p class="sub">Admin panel</p>
+  <% if (error) { %><div class="msg bad"><%= error %></div><% } %>
+  <% if (timeout) { %><div class="msg warn">Kaafi der se kaam nahi kiya, isliye logout ho gaya. Dobara login karein.</div><% } %>
+  <form method="post" action="/admin/login" autocomplete="off">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <div class="field"><label for="u">Username</label><input id="u" name="username" required autofocus maxlength="60"></div>
+    <div class="field"><label for="p">Password</label><input id="p" name="password" type="password" required maxlength="200"></div>
+    <button class="btn btn-navy" type="submit">Login</button>
+  </form>
+  <p class="tiny" style="margin-top:16px;text-align:center">5 galat koshish par account 15 minute ke liye band ho jaayega.</p>
+</div></div>
+</body></html>

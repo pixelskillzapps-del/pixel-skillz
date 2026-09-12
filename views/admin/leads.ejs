@@ -1,0 +1,37 @@
+<%- include('_layout', {title:'Enquiries', nav:'leads'}) %>
+<div class="head"><h1>Enquiries</h1>
+  <div class="right">
+    <a class="btn btn-line btn-sm" href="/admin/leads">Sab</a>
+    <a class="btn btn-line btn-sm" href="/admin/leads?status=naya">Naye</a>
+    <a class="btn btn-line btn-sm" href="/admin/leads?status=baat_hui">Baat hui</a>
+    <a class="btn btn-line btn-sm" href="/admin/leads?status=admission">Admission</a>
+    <a class="btn btn-navy btn-sm" href="/admin/leads.csv">Excel download</a>
+  </div>
+</div>
+<div class="card">
+<% if (!rows.length) { %><p>Koi enquiry nahi mili.</p><% } else { %>
+<table><thead><tr><th>Kab</th><th>Naam</th><th>Mobile</th><th>Course</th><th>Time</th><th>Baat</th><th>Status</th></tr></thead><tbody>
+<% rows.forEach(function(r){ %>
+  <tr>
+    <td class="num"><%= new Date(r.created_at).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'}) %></td>
+    <td><b><%= r.name %></b><br><span class="tiny"><%= r.source %></span></td>
+    <td><a href="tel:+91<%= r.phone %>"><%= r.phone %></a><br>
+        <a class="tiny" target="_blank" rel="noopener" href="https://wa.me/91<%= r.phone %>">WhatsApp ↗</a></td>
+    <td><%= r.course %></td>
+    <td><%= r.time_pref %></td>
+    <td style="max-width:240px"><%= r.message %></td>
+    <td>
+      <form method="post" action="/admin/leads/<%= r.id %>/status">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <select name="status" onchange="this.form.submit()">
+          <% ['naya','baat_hui','admission','nahi'].forEach(function(st){ %>
+            <option value="<%= st %>" <%= r.status===st?'selected':'' %>><%= st.replace('_',' ') %></option>
+          <% }); %>
+        </select>
+      </form>
+    </td>
+  </tr>
+<% }); %>
+</tbody></table><% } %>
+</div>
+<%- include('_end') %>

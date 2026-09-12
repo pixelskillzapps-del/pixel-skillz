@@ -1,0 +1,71 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Computer</span>
+      <h2 class="rv">Computer & BCA Classes</h2>
+      <p class="sub rv">Practical ke saath, sirf theory nahi</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= COMPUTER ================= -->
+<section class="white" id="computer">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Computer &amp; <em>BCA</em> Classes</h2>
+      <p class="sub rv">Wahi subjects jo BCA me padhaye jaate hain — practical ke saath</p>
+    </div>
+    <div class="g3">
+      <div class="card rv"><span class="tagline">Beginner</span><h3>Computer Fundamentals + MS Office</h3><p>Hardware parts, Windows, Word, Excel, PowerPoint, typing aur internet ka safe istemaal.</p><div class="cfoot"><span>⏱ 3 mahine</span><span>💻 Lab included</span></div></div>
+      <div class="card rv"><span class="tagline">Programming</span><h3>C · C++ · Java</h3><p>Logic building se OOPs tak. Har chapter ke programs khud machine par likhwaye jaate hain.</p><div class="cfoot"><span>⏱ 4 mahine</span><span>💻 Per language</span></div></div>
+      <div class="card rv"><span class="tagline">Database</span><h3>DBMS + SQL</h3><p>ER diagram, normalization, joins aur queries — BCA syllabus ke exact hisaab se.</p><div class="cfoot"><span>⏱ 3 mahine</span><span>💻 Lab included</span></div></div>
+      <div class="card rv"><span class="tagline">Web</span><h3>HTML · CSS · JavaScript</h3><p>Course ke end me student apni khud ki website banata hai — portfolio ke liye.</p><div class="cfoot"><span>⏱ 3 mahine</span><span>💻 1 project</span></div></div>
+      <div class="card rv"><span class="tagline">Core CS</span><h3>Data Structures + Python</h3><p>Array, linked list, stack, queue, sorting aur searching — aur Python ki basic programming.</p><div class="cfoot"><span>⏱ 4 mahine</span><span>💻 Lab included</span></div></div>
+      <div class="card rv"><span class="tagline">Support</span><h3>BCA Semester Doubt Class</h3><p>College exam se pehle unit-wise revision aur practical file banwane me poori madad.</p><div class="cfoot"><span>⏱ Per semester</span><span>💻 File help</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULT BANNER 2 ================= -->
+<section>
+  <div class="wrap">
+    <div class="rbanner rv">
+      <div class="rhead">
+        <span class="cnt"><%= s.banner2_count %></span>
+        <span class="txt"><%= s.banner2_text %></span>
+      </div>
+      <div class="rgrid">
+        <% compToppers.forEach(function(t){ %>
+        <div class="rcard">
+          <div class="rpic <%= t.theme %>"><% if(t.photo){ %><img src="/uploads/<%= t.photo %>" alt="<%= t.name %>" loading="lazy"><% } else { %><%= t.name.split(" ").map(function(w){return w[0]}).join("").slice(0,2).toUpperCase() %><% } %></div>
+          <div class="rinfo"><b><%= t.name %></b><small><%= t.school %></small><span class="sel"><%= t.score %><% if(t.klass){ %> · <%= t.klass %><% } %></span></div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="rmore">aur bhi bahut saare…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

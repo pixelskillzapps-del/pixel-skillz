@@ -1,0 +1,38 @@
+<!-- ================= MODAL ================= -->
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Enroll form">
+  <div class="modal-box">
+    <button class="x" id="modalX" aria-label="Band karein">✕</button>
+    <div class="modal-art">
+      <h3>Request a call back</h3>
+      <p>Apni detail bhar dijiye, hum usi din phone karenge.</p>
+      <ul>
+        <li>✓ Demo class bilkul free</li>
+        <li>✓ Batch me sirf 18 seat</li>
+        <li>✓ Fees ki poori jaankari phone par</li>
+      </ul>
+    </div>
+    <div class="modal-body">
+      <h3>Enroll / Enquiry</h3>
+      <div class="form-grid">
+        <div class="field full"><label for="m-name">Student ka naam</label><input id="m-name" type="text" placeholder="Pura naam"></div>
+        <div class="field full"><label for="m-phone">Mobile number</label><input id="m-phone" type="tel" inputmode="numeric" placeholder="10 digit number"></div>
+        <div class="field full"><label for="m-class">Class / Course</label>
+          <select id="m-class">
+            <option>Class 1–5</option><option>Class 6–8</option><option>Class 9–10</option>
+            <option>Class 11–12 (Science)</option><option>Class 11–12 (Commerce)</option>
+            <option>Class 11–12 (Arts)</option><option>Computer / MS Office</option>
+            <option>C / C++ / Java</option><option>DBMS / SQL</option>
+            <option>Web development</option><option>BCA doubt class</option>
+          </select>
+        </div>
+        <div class="field full" style="position:absolute;left:-9999px" aria-hidden="true">
+          <label for="m-website">Website</label><input id="m-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field full">
+          <button class="btn btn-orange" id="modalSend" style="width:100%;justify-content:center">Submit Application <span class="sq">›</span></button>
+          <p class="form-note" id="modalNote">Aapka number sirf hamare paas rahega.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

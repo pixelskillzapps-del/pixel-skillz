@@ -1,0 +1,17 @@
+<%- include('_layout', {title:'Activity Log', nav:'log'}) %>
+<div class="head"><h1>Activity Log</h1></div>
+<p>Har admin ne kab kya kiya, sab yahan likha jaata hai. Agar kabhi shak ho ki koi aur aapke account me ghusa hai, sabse pehle yahi dekhein.</p>
+<div class="card">
+<table><thead><tr><th>Kab</th><th>Kaun</th><th>Kya kiya</th><th>Detail</th><th>IP</th></tr></thead><tbody>
+<% rows.forEach(function(r){ %>
+  <tr>
+    <td class="num"><%= new Date(r.created_at).toLocaleString('en-IN',{dateStyle:'short',timeStyle:'short'}) %></td>
+    <td><%= r.username %></td>
+    <td><%= r.action %></td>
+    <td><%= r.detail %></td>
+    <td class="num"><%= r.ip %></td>
+  </tr>
+<% }); %>
+</tbody></table>
+</div>
+<%- include('_end') %>

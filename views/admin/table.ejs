@@ -1,0 +1,97 @@
+<%- include('_layout', {title:meta.label, nav:table}) %>
+<div class="head"><h1><%= meta.label %></h1>
+  <div class="right"><a class="btn btn-line btn-sm" href="/" target="_blank">Website dekhein ↗</a></div>
+</div>
+<% if (typeof error !== 'undefined' && error) { %><div class="msg bad"><%= error %></div><% } %>
+
+<div class="card">
+  <h2>Naya jodein</h2>
+  <form method="post" action="/admin/t/<%= table %>/save" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <input type="hidden" name="id" value="0">
+    <div class="grid">
+      <% meta.fields.forEach(function(f){ %>
+        <div>
+          <label><%= f.label %></label>
+          <% if (f.t === 'textarea') { %>
+            <textarea name="<%= f.k %>" maxlength="<%= f.max %>" <%= f.required?'required':'' %>></textarea>
+          <% } else if (f.t === 'select') { %>
+            <select name="<%= f.k %>"><% f.options.forEach(function(o){ %><option><%= o %></option><% }); %></select>
+          <% } else if (f.t === 'theme') { %>
+            <select name="<%= f.k %>">
+              <option value="p-a">Neela–Baingani</option><option value="p-b">Naranji–Laal</option>
+              <option value="p-c">Hara–Neela</option><option value="p-d">Gulaabi–Baingani</option>
+            </select>
+          <% } else if (f.t === 'number') { %>
+            <input name="<%= f.k %>" type="number" min="<%= f.min %>" max="<%= f.max %>" value="<%= f.min %>">
+          <% } else { %>
+            <input name="<%= f.k %>" maxlength="<%= f.max %>" <%= f.required?'required':'' %>>
+          <% } %>
+        </div>
+      <% }); %>
+      <% if (meta.hasFile) { %>
+        <div><label><%= meta.fileLabel %> (max 8 MB)</label>
+          <input type="file" name="file" accept="<%= meta.fileKind==='image' ? 'image/jpeg,image/png,image/webp' : 'application/pdf' %>"></div>
+      <% } %>
+      <div><label>Kram (chhota number pehle)</label><input name="sort" type="number" value="0"></div>
+    </div>
+    <div class="row">
+      <span class="chk"><input type="checkbox" name="active" checked id="na"><label for="na" style="margin:0">Website par dikhaayein</label></span>
+      <button class="btn btn-orange" type="submit">Jodein</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Abhi jo hain (<%= rows.length %>)</h2>
+  <% if (!rows.length) { %><p>Abhi kuch nahi hai.</p><% } %>
+  <% rows.forEach(function(r){ %>
+    <form method="post" action="/admin/t/<%= table %>/save" enctype="multipart/form-data"
+          style="border-top:1px solid var(--line);padding:16px 0">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <input type="hidden" name="id" value="<%= r.id %>">
+      <div class="grid">
+        <% meta.fields.forEach(function(f){ %>
+          <div>
+            <label><%= f.label %></label>
+            <% if (f.t === 'textarea') { %>
+              <textarea name="<%= f.k %>" maxlength="<%= f.max %>"><%= r[f.k] %></textarea>
+            <% } else if (f.t === 'select') { %>
+              <select name="<%= f.k %>"><% f.options.forEach(function(o){ %><option <%= r[f.k]===o?'selected':'' %>><%= o %></option><% }); %></select>
+            <% } else if (f.t === 'theme') { %>
+              <select name="<%= f.k %>">
+                <option value="p-a" <%= r[f.k]==='p-a'?'selected':'' %>>Neela–Baingani</option>
+                <option value="p-b" <%= r[f.k]==='p-b'?'selected':'' %>>Naranji–Laal</option>
+                <option value="p-c" <%= r[f.k]==='p-c'?'selected':'' %>>Hara–Neela</option>
+                <option value="p-d" <%= r[f.k]==='p-d'?'selected':'' %>>Gulaabi–Baingani</option>
+              </select>
+            <% } else if (f.t === 'number') { %>
+              <input name="<%= f.k %>" type="number" min="<%= f.min %>" max="<%= f.max %>" value="<%= r[f.k] %>">
+            <% } else { %>
+              <input name="<%= f.k %>" maxlength="<%= f.max %>" value="<%= r[f.k] %>">
+            <% } %>
+          </div>
+        <% }); %>
+        <% if (meta.hasFile) { %>
+          <div><label><%= meta.fileLabel %> badlein
+            <% var cur = meta.fileKind==='image' ? r.photo : r.filename; %>
+            <% if (cur) { %><span class="tiny">— lagi hui hai</span>
+            <% } else { %><span class="tiny" style="color:var(--warn)">— abhi nahi hai</span><% } %>
+            </label>
+            <% if (meta.fileKind==='image' && r.photo) { %>
+              <img src="/uploads/<%= r.photo %>" alt="" style="width:54px;height:54px;object-fit:cover;border-radius:8px;margin-bottom:6px">
+            <% } %>
+            <input type="file" name="file" accept="<%= meta.fileKind==='image' ? 'image/jpeg,image/png,image/webp' : 'application/pdf' %>"></div>
+        <% } %>
+        <div><label>Kram</label><input name="sort" type="number" value="<%= r.sort %>"></div>
+      </div>
+      <div class="row">
+        <span class="chk"><input type="checkbox" name="active" <%= r.active?'checked':'' %> id="a<%= r.id %>"><label for="a<%= r.id %>" style="margin:0">Website par dikhaayein</label></span>
+        <button class="btn btn-navy btn-sm" type="submit">Save</button>
+        <button class="btn btn-del btn-sm" type="submit" formaction="/admin/t/<%= table %>/<%= r.id %>/delete"
+                onclick="return confirm('Pakka delete karna hai? Wapas nahi aayega.')">Delete</button>
+      </div>
+    </form>
+  <% }); %>
+</div>
+<%- include('_end') %>

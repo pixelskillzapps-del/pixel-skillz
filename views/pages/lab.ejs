@@ -1,0 +1,65 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Sirf Pixel Skillz me</span>
+      <h2 class="rv">3D Learning Lab</h2>
+      <p class="sub rv">Mushkil topic ko kholkar dekhiye</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 3D LAB ================= -->
+<section id="lab">
+  <span class="blob l" style="top:30%"></span>
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Topic Ko <em>Kholkar</em> Dekhiye</h2>
+      <p class="sub rv">Sirf Pixel Skillz me — 3D Learning Lab</p>
+    </div>
+    <div class="lab rv">
+      <div class="stage">
+        <div class="stage-top" role="tablist" aria-label="Topic chunein" id="topicTabs"></div>
+        <div id="canvas-host"><div class="loading" id="loading">3D model load ho raha hai…</div></div>
+        <div class="stage-tools">
+          <button class="tool" id="btnExplode">Khol kar dekhein</button>
+          <button class="tool active" id="btnSpin">Auto ghumaayein</button>
+          <button class="tool" id="btnReset">Reset</button>
+          <span class="hint">Drag = ghumaayein · Scroll = zoom · Tap = jaankari</span>
+        </div>
+      </div>
+      <div class="info" id="infoPanel">
+        <span class="tag" id="infoTag">Shuruaat</span>
+        <h3 id="infoTitle">Kisi bhi part par tap karein</h3>
+        <p id="infoDesc">Upar se topic chunein, phir model ka koi bhi hissa tap karein. “Khol kar dekhein” dabaane par poora model alag-alag hokar khul jaayega.</p>
+        <div class="facts" id="infoFacts"></div>
+        <div class="part-list"><h4>Is model ke parts</h4><div class="part-btns" id="partBtns"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/vendor/three.min.js"></script>
+<script src="/js/vendor/GLTFLoader.js"></script>
+<script src="/js/site.js"></script>
+<script src="/js/lab.js"></script>
+</body>
+</html>

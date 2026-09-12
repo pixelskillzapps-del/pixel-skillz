@@ -1,0 +1,55 @@
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-card">
+      <a class="brand" href="/" style="margin-right:0">
+        <div style="width:54px;height:54px;border-radius:12px;background:#fff;padding:4px;flex:none;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <img src="/img/logo.jpg" alt="<%= s.institute_name %>" style="width:46px;height:46px;object-fit:contain">
+          </div>
+        <div><b><%= s.institute_name %></b><span><%= s.city %></span></div>
+      </a>
+      <span class="msg">Aaiye, bachche ka safar shuru karte hain</span>
+      <a class="btn btn-navy" href="#" data-modal>Enroll Now <span class="sq">›</span></a>
+      <span class="fsoc">
+        <a href="<%= s.facebook || '#' %>" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7H17V2.4C16.7 2.4 15.6 2.3 14.4 2.3c-2.6 0-4.4 1.6-4.4 4.5v2.7H7V13h3v9z"/></svg></a>
+        <a href="<%= s.instagram || '#' %>" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="<%= s.youtube || '#' %>" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.3a2.7 2.7 0 0 0-1.9-1.9C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 6.7C1 8.4 1 12 1 12s0 3.6.5 5.3a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9C23 15.6 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+      </span>
+    </div>
+
+    <div class="fgrid">
+      <div>
+        <h4>About Us</h4>
+        <p style="font-size:13.5px;color:#D0DBE8;font-style:italic;margin-bottom:12px">"<%= s.tagline %>"</p>
+        <div style="font-size:13px;color:#9AA7C2;line-height:1.8">
+          <div>📍 <%= s.address_line1 %></div>
+          <div style="padding-left:20px"><%= s.address_line2 %></div>
+          <div>📞 <a href="tel:+91<%= s.phone.replace(/\D/g,'') %>" style="color:#9AA7C2"><%= s.phone %></a></div>
+          <div>✉️ <a href="mailto:<%= s.email %>" style="color:#9AA7C2"><%= s.email %></a></div>
+        </div>
+      </div>
+      <div><h4>Top Courses</h4><ul>
+        <li><i>➤</i><a href="/courses">Class 9–10 Board</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Science</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Commerce</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Arts</a></li>
+        <li><i>➤</i><a href="/courses">Class 1–8 Foundation</a></li>
+      </ul></div>
+      <div><h4>Computer</h4><ul>
+        <li><i>➤</i><a href="/computer">MS Office</a></li>
+        <li><i>➤</i><a href="/computer">C, C++, Java</a></li>
+        <li><i>➤</i><a href="/computer">DBMS / SQL</a></li>
+        <li><i>➤</i><a href="/computer">Web Development</a></li>
+        <li><i>➤</i><a href="/computer">BCA Doubt Class</a></li>
+      </ul></div>
+      <div><h4>Get In Touch</h4><ul>
+        <li><i>📍</i><%= s.address_line2 %></li>
+        <li><i>✉️</i><a href="mailto:<%= s.email %>"><%= s.email %></a></li>
+        <li><i>📞</i><a href="tel:<%= s.phone.replace(/\s/g,"") %>"><%= s.phone %></a></li>
+        <li><i>🕒</i><%= s.timings %></li>
+      </ul></div>
+    </div>
+    <div class="fbot">© <%= year %> <%= s.institute_name.toUpperCase() %>, <%= s.city.toUpperCase() %> — Sabhi adhikar surakshit.</div>
+  </div>
+</footer>

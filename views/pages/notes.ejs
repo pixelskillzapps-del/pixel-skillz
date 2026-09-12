@@ -1,0 +1,51 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Notes</span>
+      <h2 class="rv">Free Study Material</h2>
+      <p class="sub rv">Notes, formula sheet aur practice paper</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= NOTES ================= -->
+<section id="notes">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Free <em>Study Material</em></h2>
+      <p class="sub rv">Notes, formula sheet aur practice paper — bilkul free</p>
+    </div>
+    <div class="g2">
+      <% notes.forEach(function(n){ %>
+      <a class="mat rv" <% if(n.filename){ %>href="/notes/<%= n.id %>"<% } else { %>href="#" onclick="return false"<% } %>>
+        <span class="pdf">PDF</span>
+        <span><b><%= n.title %></b><small><%= n.meta %><% if(!n.filename){ %> · file abhi upload nahi hui<% } %></small></span>
+        <span class="go">↓</span>
+      </a>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

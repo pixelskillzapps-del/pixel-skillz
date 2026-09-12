@@ -1,0 +1,38 @@
+<%- include('_layout', {title:'Website ki Photos', nav:'photos'}) %>
+<div class="head"><h1>Website ki Photos</h1>
+  <div class="right"><a class="btn btn-line" href="/" target="_blank">Website dekhein ↗</a></div>
+</div>
+<% if (error) { %><div class="msg bad"><%= error %></div><% } %>
+<p>Har jagah ke liye photo chunkar upload karein. Photo na ho to wahan rangeen dabba dikhta rahega.
+Sabse achha size: <b>chaudai 1200px ke aas-paas</b>, JPG ya PNG, 8 MB se kam.</p>
+
+<div class="card">
+<% slots.forEach(function(sl){ %>
+  <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding:14px 0">
+    <div style="width:150px;height:96px;border-radius:10px;overflow:hidden;flex:none;background:#EDF1FA;display:grid;place-items:center">
+      <% if (imgs[sl.slot]) { %>
+        <img src="/uploads/<%= imgs[sl.slot] %>" alt="" style="width:100%;height:100%;object-fit:cover">
+      <% } else { %>
+        <span class="tiny" style="text-align:center;padding:8px">Abhi koi<br>photo nahi</span>
+      <% } %>
+    </div>
+    <div style="flex:1;min-width:190px">
+      <b style="color:var(--ink)"><%= sl.label %></b><br>
+      <span class="tiny"><%= sl.hint %></span>
+    </div>
+    <form method="post" action="/admin/photos" enctype="multipart/form-data" style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <input type="hidden" name="slot" value="<%= sl.slot %>">
+      <input type="file" name="file" accept="image/jpeg,image/png,image/webp" required style="width:220px">
+      <button class="btn btn-orange btn-sm" type="submit"><%= imgs[sl.slot] ? 'Badlein' : 'Upload' %></button>
+    </form>
+    <% if (imgs[sl.slot]) { %>
+    <form method="post" action="/admin/photos/<%= sl.slot %>/delete">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <button class="btn btn-del btn-sm" onclick="return confirm('Photo hata dein?')">Hataayein</button>
+    </form>
+    <% } %>
+  </div>
+<% }); %>
+</div>
+<%- include('_end') %>

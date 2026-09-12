@@ -1,0 +1,56 @@
+<div class="strip"><%= s.announcement %></div>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="/">
+      <div class="mark" style="background:transparent;padding:0;overflow:hidden">
+        <img src="/img/logo.jpg" alt="<%= s.institute_name %>" style="width:46px;height:46px;object-fit:contain">
+      </div>
+      <div><b><%= s.institute_name %></b><span><%= s.city %></span></div>
+    </a>
+    <ul class="menu" id="menu">
+      <li><a href="/" class="<%= page==="home"?"on":"" %>">Home</a></li>
+      <li><a href="/about" class="<%= page==="about"?"on":"" %>">About</a></li>
+      <li class="has-drop"><a href="/courses" class="<%= (page==="courses"||page==="computer")?"on":"" %>">Courses <i class="caret"></i></a>
+        <div class="drop wide">
+          <h5>School Classes</h5>
+          <a href="/courses">Class 1–5 · Foundation</a>
+          <a href="/courses">Class 6–8 · Middle School</a>
+          <a href="/courses">Class 9–10 · Board Foundation</a>
+          <a href="/courses">Class 11–12 · Science</a>
+          <a href="/courses">Class 11–12 · Commerce</a>
+          <a href="/courses">Class 11–12 · Arts</a>
+          <h5>Computer &amp; BCA</h5>
+          <a href="/computer">Computer Basics + MS Office</a>
+          <a href="/computer">C · C++ · Java</a>
+          <a href="/computer">DBMS &amp; SQL</a>
+          <a href="/computer">Web Development</a>
+          <a href="/computer">Data Structures + Python</a>
+          <a href="/computer">BCA Semester Doubt Class</a>
+        </div>
+      </li>
+      <li class="has-drop"><a href="/courses">Programs <i class="caret"></i></a>
+        <div class="drop">
+          <a href="/courses">Regular Batch</a>
+          <a href="/courses">Crash Course</a>
+          <a href="/courses">Board Revision Batch</a>
+          <a href="/courses">Doubt-only Batch</a>
+          <a href="/courses">Home Tuition</a>
+          <a href="/3d-lab">3D Learning Lab</a>
+        </div>
+      </li>
+      <li><a href="/results" class="<%= page==="results"?"on":"" %>">Results</a></li>
+      <li><a href="/fees" class="<%= page==="fees"?"on":"" %>">Fees</a></li>
+      <li><a href="/faq" class="<%= page==="faq"?"on":"" %>">FAQ</a></li>
+      <li><a href="/notes" class="<%= page==="notes"?"on":"" %>">Notes</a></li>
+      <li><a href="/contact" class="<%= page==="contact"?"on":"" %>">Contact</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-line btn-sm" href="/fees">Fees</a>
+      <a class="btn btn-navy btn-sm" href="#" data-modal>Register <span class="sq">›</span></a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">

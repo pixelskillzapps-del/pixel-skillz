@@ -1,0 +1,174 @@
+<%- include('_layout', {title:topic.label, nav:'topics'}) %>
+<div class="head"><h1><%= topic.label %></h1>
+  <div class="right">
+    <a class="btn btn-line" href="/admin/topics">← Wapas</a>
+    <a class="btn btn-navy" href="/3d-lab" target="_blank">Lab me dekhein ↗</a>
+  </div>
+</div>
+
+<% if (error) { %><div class="msg bad"><%= error %></div><% } %>
+
+<% if (topic.builder === 'glb') { %>
+  <!-- GLB file wala topic -->
+  <div class="card">
+    <h2>📁 3D Model File</h2>
+    <% if (topic.model_file) { %>
+      <div class="msg ok" style="margin-bottom:14px">
+        <b>Model laga hua hai — <%= parts.length %> parts ban gaye hain.</b><br>
+        Neeche har part me jaankari bhar sakte hain. Model badalni ho to neeche se naya upload karein.
+      </div>
+    <% } else { %>
+      <div class="msg warn" style="margin-bottom:14px">
+        <b>Abhi koi model nahi laga.</b> Neeche .glb file upload karein.
+      </div>
+    <% } %>
+    <form method="post" action="/admin/topics/<%= topic.id %>/model" enctype="multipart/form-data">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+        <div style="flex:1;min-width:220px">
+          <label>.glb file (max 40 MB) — upload hote hi parts apne aap ban jayenge</label>
+          <input type="file" name="file" accept=".glb,model/gltf-binary" required>
+        </div>
+        <button class="btn btn-orange" type="submit">Upload karein</button>
+      </div>
+    </form>
+  </div>
+
+  <% if (topic.model_file && parts.length) { %>
+  <div class="card">
+    <h2>⚙️ Model theek karo (agar tedha/khada lage)</h2>
+    <p style="font-size:13.5px">Lab me model khada ya tedha dikh raha ho to yahan number badlein.
+    Zyadatar <b>Ghumao X = -90</b> se seedha ho jaata hai.</p>
+    <form method="post" action="/admin/topics/save">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <input type="hidden" name="id" value="<%= topic.id %>">
+      <input type="hidden" name="label" value="<%= topic.label %>">
+      <input type="hidden" name="builder" value="<%= topic.builder %>">
+      <input type="hidden" name="subject" value="<%= topic.subject %>">
+      <input type="hidden" name="dist" value="<%= topic.dist %>">
+      <input type="hidden" name="sort" value="<%= topic.sort %>">
+      <input type="hidden" name="active" value="1">
+      <div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap">
+        <div><label>Ghumao X°</label><input name="rot_x" type="number" step="90" value="<%= topic.rot_x || 0 %>" style="width:100px"></div>
+        <div><label>Ghumao Y°</label><input name="rot_y" type="number" step="90" value="<%= topic.rot_y || 0 %>" style="width:100px"></div>
+        <div><label>Ghumao Z°</label><input name="rot_z" type="number" step="90" value="<%= topic.rot_z || 0 %>" style="width:100px"></div>
+        <button class="btn btn-navy" type="submit">Save karo</button>
+      </div>
+      <p class="tiny">Khada ho to X=-90 try karein. Phir bhi tedha ho to X=0, Z=90 ya Z=-90 try karein.</p>
+    </form>
+  </div>
+  <% } %>
+
+<% } else { %>
+  <!-- Built-in / saancha wala topic -->
+  <div class="card">
+    <form method="post" action="/admin/topics/save">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <input type="hidden" name="id" value="<%= topic.id %>">
+      <input type="hidden" name="builder" value="<%= topic.builder %>">
+      <input type="hidden" name="rot_x" value="0">
+      <input type="hidden" name="rot_y" value="0">
+      <input type="hidden" name="rot_z" value="0">
+      <div class="grid">
+        <div><label>Topic ka naam</label><input name="label" value="<%= topic.label %>" maxlength="60" required></div>
+        <div><label>Subject</label>
+          <select name="subject">
+            <% ['Biology','Computer','Chemistry','Physics','Science','Geography'].forEach(function(s){ %>
+              <option <%= topic.subject===s?'selected':'' %>><%= s %></option>
+            <% }); %>
+          </select></div>
+        <div><label>Kram</label><input name="sort" type="number" value="<%= topic.sort %>"></div>
+        <div><label>Camera doori (5-18)</label><input name="dist" type="number" step="0.5" min="5" max="18" value="<%= topic.dist %>"></div>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <span class="chk"><input type="checkbox" name="active" <%= topic.active?'checked':'' %> id="ta">
+          <label for="ta" style="margin:0">Lab me dikhaayein</label></span>
+        <button class="btn btn-navy btn-sm" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+<% } %>
+
+<!-- Parts ki list -->
+<div class="card">
+  <h2>
+    <% if (topic.builder === 'glb') { %>
+      ✏️ Parts me jaankari bharo (<%= parts.length %>)
+    <% } else { %>
+      ✏️ Parts (<%= parts.length %>)
+    <% } %>
+  </h2>
+
+  <% if (!parts.length) { %>
+    <div class="msg warn">
+      <% if (topic.builder === 'glb') { %>
+        Abhi koi part nahi. Upar se .glb file upload karein — parts apne aap ban jayenge.
+      <% } else { %>
+        Abhi koi part nahi. Neeche se part jodein.
+      <% } %>
+    </div>
+  <% } %>
+
+  <% if (topic.builder !== 'glb') { %>
+    <!-- Saancha wale topic me part jodne ka form -->
+    <div style="background:var(--bg);border-radius:10px;padding:16px;margin-bottom:18px">
+      <h3 style="margin-bottom:12px">Naya part jodein</h3>
+      <form method="post" action="/admin/topics/<%= topic.id %>/part">
+        <input type="hidden" name="_csrf" value="<%= csrf %>">
+        <input type="hidden" name="pid" value="0">
+        <div class="grid">
+          <div><label>Part ka naam</label><input name="label" maxlength="60" required placeholder="jaise: Crust"></div>
+          <div><label>Tag</label><input name="tag" maxlength="24" placeholder="Biology"></div>
+          <div><label>Kram</label><input name="sort" type="number" value="<%= parts.length + 1 %>"></div>
+        </div>
+        <div style="margin-top:12px"><label>Poori jaankari (2-4 line)</label>
+          <textarea name="description" maxlength="900" placeholder="Yahan samjhaayein…"></textarea></div>
+        <div style="margin-top:10px"><label>Exam points — beech me | lagayein</label>
+          <input name="facts" maxlength="300" placeholder="Sabse patli parat|5-70 km"></div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn btn-orange" type="submit">Jodein</button>
+        </div>
+      </form>
+    </div>
+  <% } %>
+
+  <!-- Existing parts -->
+  <% parts.forEach(function(p, i){ %>
+    <details style="border:1px solid var(--line);border-radius:10px;margin-bottom:8px;overflow:hidden">
+      <summary style="padding:13px 16px;cursor:pointer;font-family:var(--head);font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center">
+        <span><%= (i+1) %>. <%= p.label || '(bina naam)' %></span>
+        <span style="font-size:12px;color:var(--txt-2);font-weight:400">click karke kholein ▾</span>
+      </summary>
+      <div style="padding:16px;border-top:1px solid var(--line);background:#FAFBFE">
+        <form method="post" action="/admin/topics/<%= topic.id %>/part">
+          <input type="hidden" name="_csrf" value="<%= csrf %>">
+          <input type="hidden" name="pid" value="<%= p.id %>">
+          <% if (topic.builder === 'glb') { %>
+            <input type="hidden" name="label" value="<%= p.label %>">
+            <input type="hidden" name="tag" value="<%= p.tag || 'Subject' %>">
+            <input type="hidden" name="sort" value="<%= p.sort %>">
+          <% } else { %>
+            <div class="grid" style="margin-bottom:12px">
+              <div><label>Naam</label><input name="label" value="<%= p.label %>" maxlength="60"></div>
+              <div><label>Tag</label><input name="tag" value="<%= p.tag %>" maxlength="24"></div>
+              <div><label>Kram</label><input name="sort" type="number" value="<%= p.sort %>"></div>
+            </div>
+          <% } %>
+          <div style="margin-bottom:10px">
+            <label>Jaankari (2-4 line me)</label>
+            <textarea name="description" maxlength="900" placeholder="Yahan samjhaayein…"><%= p.description %></textarea>
+          </div>
+          <div><label>Exam points — beech me | lagayein</label>
+            <input name="facts" value="<%= p.facts %>" maxlength="300" placeholder="Pehla point|Doosra point|Teesra point"></div>
+          <div class="row" style="margin-top:10px">
+            <button class="btn btn-navy btn-sm" type="submit">Save</button>
+            <button class="btn btn-del btn-sm" type="submit"
+              formaction="/admin/topics/<%= topic.id %>/part/<%= p.id %>/delete"
+              onclick="return confirm('Ye part hata dein?')">Hataayein</button>
+          </div>
+        </form>
+      </div>
+    </details>
+  <% }); %>
+</div>
+<%- include('_end') %>

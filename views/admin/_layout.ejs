@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><%= title %> — Admin</title>
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+<div class="shell">
+  <aside>
+    <div class="logo">
+  <img src="/img/logo.jpg" alt="Pixel Skillz" style="width:32px;height:32px;object-fit:contain;border-radius:8px;background:#fff;padding:2px">
+  Pixel Skillz
+</div>
+    <nav>
+      <a href="/admin" class="<%= nav==='home'?'on':'' %>">Dashboard</a>
+      <a href="/admin/leads" class="<%= nav==='leads'?'on':'' %>">Enquiries</a>
+      <div class="sep">Content</div>
+      <a href="/admin/photos" class="<%= nav==='photos'?'on':'' %>">Website ki Photos</a>
+      <a href="/admin/topics" class="<%= nav==='topics'?'on':'' %>">3D Topics</a>
+      <% Object.keys(tables).forEach(function(t){ %>
+        <a href="/admin/t/<%= t %>" class="<%= nav===t?'on':'' %>"><%= tables[t].label %></a>
+      <% }); %>
+      <div class="sep">System</div>
+      <a href="/admin/settings" class="<%= nav==='settings'?'on':'' %>">Site Settings</a>
+      <a href="/admin/password" class="<%= nav==='password'?'on':'' %>">Password</a>
+      <a href="/admin/log" class="<%= nav==='log'?'on':'' %>">Activity Log</a>
+      <a href="/" target="_blank">Website dekhein ↗</a>
+    </nav>
+    <form method="post" action="/admin/logout" class="lo">
+      <input type="hidden" name="_csrf" value="<%= csrf %>">
+      <button type="submit">Logout (<%= admin.username %>)</button>
+    </form>
+  </aside>
+  <main>

@@ -1,0 +1,111 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">About Us</span>
+      <h2 class="rv">Hamare Baare Me</h2>
+      <p class="sub rv">12+ saal se Meerut me padha rahe hain</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <span class="blob r" style="top:10%"></span>
+  <div class="wrap about">
+    <div class="about-art rv">
+      <span class="dotgrid"></span>
+      <%- include('../partials/photo',{slot:'about1',cls:'p-a aa-1',label:'Classroom / building'}) %>
+      <%- include('../partials/photo',{slot:'about2',cls:'p-b aa-2',label:'Teacher ki photo'}) %>
+    </div>
+    <div>
+      <h2 class="rv">About Us</h2>
+      <p class="sub rv" style="margin-bottom:14px;text-align:left">Padhai, Career aur Uske Aage Ke Liye Taiyaar</p>
+      <p class="rv">Pixel Skillz Meerut ki wo coaching hai jahan Class 1 se 12 tak har subject — Science, Commerce aur Arts — padhaya jaata hai, aur saath me BCA-level ke computer courses bhi. Naam "Pixel" isliye, kyunki hum har topic ko uske sabse chhote hisse tak kholkar samjhate hain.</p>
+      <p class="rv">Tareeka simple hai: chhota batch, har bachche par nazar, roz homework check, aur ratta bilkul nahi.</p>
+      <div class="about-card rv">
+        <ul>
+          <li><i class="ck">➤</i> <%= s.stat_years %> saal ka anubhav · <%= s.stat_students %> students padh chuke hain</li>
+          <li><i class="ck">➤</i> Batch me sirf 18 seat, har hafte test</li>
+          <li><i class="ck">➤</i> Mushkil chapter 3D model par kholkar samjhaye jaate hain</li>
+        </ul>
+        <a class="btn btn-navy" href="/faculty">More About Us <span class="sq">›</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="white">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Kyun Chunein <em>Pixel Skillz</em>?</h2>
+      <p class="sub rv">Jo cheezein hume alag banati hain</p>
+    </div>
+    <div class="tiles">
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="10.5" r="2"/><path d="M8.5 16c.6-1.9 2-2.8 3.5-2.8s2.9.9 3.5 2.8"/></svg></div><b>Batch me sirf 18 seat</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg></div><b>3D se padhai</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Har hafte test</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 16.5V16M14.5 8.6l-5.5 5.5M9 8.6h5.5v5.5"/></svg></div><b>Roz homework check</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="12" r="3.5"/><path d="M12 10v2l1.4.9"/></svg></div><b>Doubt class free</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M8 12.5h8M8 9.5h8M9.5 15.5h5"/></svg></div><b>Parents ko report</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REELS ================= -->
+<section style="padding-top:40px;padding-bottom:40px">
+  <div class="wrap">
+    <div class="sh" style="margin-bottom:22px">
+      <h2 class="rv">Class Ki <em>Jhalak</em></h2>
+      <p class="sub rv">Apne class ke video yahan lagayein</p>
+    </div>
+    <div class="reels">
+      <a class="reel rv p-a" href="#">3D model class me kaise chalta hai</a>
+      <a class="reel rv p-b" href="#">Topper Aditi ka interview</a>
+      <a class="reel rv p-c" href="#">Computer lab ka tour</a>
+      <a class="reel rv p-d" href="#">Board exam ki tayyari kaise karein</a>
+      <a class="reel rv p-a" href="#">Parents ki baat</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOGOS ================= -->
+<section class="white" style="padding-top:44px;padding-bottom:44px">
+  <div class="wrap">
+    <div class="sh" style="margin-bottom:24px">
+      <h2 class="rv" style="font-size:clamp(19px,2.4vw,26px)">Hamare Students In Schools Se Aate Hain</h2>
+      <p class="sub rv">Meerut aur aas-paas ke ilaake se</p>
+    </div>
+    <div class="logos">
+      <div class="logo-item rv"><i>🏫</i>St. Mary's Academy</div>
+      <div class="logo-item rv"><i>🏫</i>Dewan Public School</div>
+      <div class="logo-item rv"><i>🏫</i>Sophia Girls School</div>
+      <div class="logo-item rv"><i>🏫</i>K.L. International</div>
+      <div class="logo-item rv"><i>🏫</i>Meerut Public School</div>
+      <div class="logo-item rv"><i>🎓</i>CCS University</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

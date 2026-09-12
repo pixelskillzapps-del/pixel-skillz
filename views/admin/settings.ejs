@@ -1,0 +1,45 @@
+<%- include('_layout', {title:'Site Settings', nav:'settings'}) %>
+<div class="head"><h1>Site Settings</h1></div>
+<% if (done) { %><div class="msg ok">Save ho gaya. Website par turant dikhne lagega.</div><% } %>
+<form method="post" action="/admin/settings">
+  <input type="hidden" name="_csrf" value="<%= csrf %>">
+
+  <div class="card"><h2>Coaching ki jaankari</h2><div class="grid">
+    <div><label>Coaching ka naam</label><input name="institute_name" value="<%= s.institute_name %>"></div>
+    <div><label>Sheher</label><input name="city" value="<%= s.city %>"></div>
+    <div><label>Ek line me kya karte hain</label><input name="tagline" value="<%= s.tagline %>"></div>
+    <div><label>Upar chalne wali patti</label><input name="announcement" value="<%= s.announcement %>"></div>
+    <div><label>Hero ka trophy text</label><input name="trophy_text" value="<%= s.trophy_text %>"></div>
+  </div></div>
+
+  <div class="card"><h2>Sampark</h2><div class="grid">
+    <div><label>Phone (jaisa dikhana hai)</label><input name="phone" value="<%= s.phone %>"></div>
+    <div><label>WhatsApp number (91 + 10 digit)</label><input name="whatsapp" value="<%= s.whatsapp %>" pattern="[0-9]{12}"></div>
+    <div><label>Email</label><input name="email" type="email" value="<%= s.email %>"></div>
+    <div><label>Pata line 1</label><input name="address_line1" value="<%= s.address_line1 %>"></div>
+    <div><label>Pata line 2</label><input name="address_line2" value="<%= s.address_line2 %>"></div>
+    <div><label>Map par dhoondhne ka pata</label><input name="map_query" value="<%= s.map_query %>"></div>
+    <div><label>Timing</label><input name="timings" value="<%= s.timings %>"></div>
+    <div><label>Timing (doosri line)</label><input name="timings_extra" value="<%= s.timings_extra %>"></div>
+  </div></div>
+
+  <div class="card"><h2>Social links</h2><div class="grid">
+    <div><label>Facebook</label><input name="facebook" value="<%= s.facebook %>" placeholder="https://facebook.com/..."></div>
+    <div><label>Instagram</label><input name="instagram" value="<%= s.instagram %>" placeholder="https://instagram.com/..."></div>
+    <div><label>YouTube</label><input name="youtube" value="<%= s.youtube %>" placeholder="https://youtube.com/@..."></div>
+  </div></div>
+
+  <div class="card"><h2>Result banner ke heading</h2><div class="grid">
+    <div><label>Banner 1 — bada number</label><input name="banner1_count" value="<%= s.banner1_count %>"></div>
+    <div><label>Banner 1 — text</label><input name="banner1_text" value="<%= s.banner1_text %>"></div>
+    <div><label>Banner 2 — bada number</label><input name="banner2_count" value="<%= s.banner2_count %>"></div>
+    <div><label>Banner 2 — text</label><input name="banner2_text" value="<%= s.banner2_text %>"></div>
+    <div><label>Saal ka anubhav</label><input name="stat_years" value="<%= s.stat_years %>"></div>
+    <div><label>Kitne students</label><input name="stat_students" value="<%= s.stat_students %>"></div>
+    <div><label>Result %</label><input name="stat_result" value="<%= s.stat_result %>"></div>
+    <div><label>Kitne teachers</label><input name="stat_teachers" value="<%= s.stat_teachers %>"></div>
+  </div></div>
+
+  <button class="btn btn-orange" type="submit">Sab save karein</button>
+</form>
+<%- include('_end') %>

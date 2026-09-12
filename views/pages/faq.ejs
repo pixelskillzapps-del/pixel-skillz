@@ -1,0 +1,51 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">FAQ</span>
+      <h2 class="rv">Aksar Poochhe Jaane Wale Sawaal</h2>
+      <p class="sub rv">Jo parents sabse zyada poochte hain</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="white">
+  <div class="wrap faq-wrap">
+    <div>
+      <h2 class="rv">Frequently Asked Questions</h2>
+      <p class="sub rv" style="text-align:left;margin-bottom:20px">Jo sawaal parents sabse zyada poochte hain</p>
+      <div class="rv">
+        <% faqs.forEach(function(f){ %>
+        <div class="acc"><button class="acc-q"><%= f.question %></button><div class="acc-a"><div><%= f.answer %></div></div></div>
+        <% }); %>
+      </div>
+    </div>
+    <div class="faq-art rv">
+      <%- include('../partials/photo',{slot:'faq1',cls:'p-c fa-1',label:'Doubt class'}) %>
+      <%- include('../partials/photo',{slot:'faq2',cls:'p-d fa-2',label:'Students'}) %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

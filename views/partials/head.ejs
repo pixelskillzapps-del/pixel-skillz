@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf" content="<%= csrf %>">
+<title><%= pageTitle %> | <%= s.institute_name %>, <%= s.city %></title>
+<meta name="description" content="<%= s.institute_name %>, <%= s.city %> — <%= s.tagline %>. Har topic 3D model me kholkar samjhaya jaata hai.">
+<meta property="og:title" content="<%= s.institute_name %> — <%= s.city %>">
+<meta property="og:description" content="<%= s.tagline %>">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Noto+Sans+Devanagari:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="icon" type="image/jpeg" href="/img/logo.jpg">
+<meta property="og:image" content="/img/logo.jpg">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"EducationalOrganization",
+ "name":"<%= s.institute_name %>","telephone":"<%= s.phone %>","email":"<%= s.email %>",
+ "address":{"@type":"PostalAddress","streetAddress":"<%= s.address_line1 %>","addressLocality":"<%= s.city %>","addressCountry":"IN"}}
+</script>
+</head>
+<body>

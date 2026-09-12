@@ -1,0 +1,131 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Contact</span>
+      <h2 class="rv">Sampark Karein</h2>
+      <p class="sub rv">Form bharein ya seedha phone kar lein</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ENQUIRY + CONTACT ================= -->
+<section class="white" id="contact">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Sampark <em>Karein</em></h2>
+      <p class="sub rv">Form bharein — message seedha hamare WhatsApp par aayega</p>
+    </div>
+    <div class="g2" style="gap:30px;align-items:start">
+      <div class="form-card rv">
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Student ka naam</label><input id="f-name" type="text" placeholder="Pura naam"></div>
+          <div class="field"><label for="f-phone">Mobile number</label><input id="f-phone" type="tel" inputmode="numeric" placeholder="10 digit number"></div>
+          <div class="field"><label for="f-class">Class / Course</label>
+            <select id="f-class">
+              <option>Class 1–5</option><option>Class 6–8</option><option>Class 9–10</option>
+              <option>Class 11–12 (Science)</option><option>Class 11–12 (Commerce)</option>
+              <option>Class 11–12 (Arts)</option><option>Computer / MS Office</option>
+              <option>C / C++ / Java</option><option>DBMS / SQL</option>
+              <option>Web development</option><option>Data Structures / Python</option><option>BCA doubt class</option>
+            </select>
+          </div>
+          <div class="field"><label for="f-time">Kis time aa sakte hain</label>
+            <select id="f-time"><option>Subah</option><option>Dopahar</option><option>Shaam</option><option>Koi bhi time</option></select>
+          </div>
+          <div class="field full"><label for="f-msg">Kuch aur batana hai? <span style="font-weight:400;color:var(--txt-2)">(zaroori nahi)</span></label><textarea id="f-msg" placeholder="Jaise: sirf Maths chahiye, ya school ka naam…"></textarea></div>
+          <div class="field full" style="position:absolute;left:-9999px" aria-hidden="true">
+            <label for="f-website">Website</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <div class="field full">
+            <button class="btn btn-orange" id="sendBtn" style="width:100%;justify-content:center">WhatsApp par bhejein <span class="sq">›</span></button>
+            <p class="form-note" id="formNote">Aapka number sirf hamare paas rahega. Koi spam nahi.</p>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="cline"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Pata</b><span class="v"><%= s.address_line1 %><br><%= s.address_line2 %></span></span></div>
+        <div class="cline"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.1a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7A2 2 0 0 1 22 16.9z"/></svg></span><span><b>Phone / WhatsApp</b><span class="v"><a href="tel:<%= s.phone.replace(/\s/g,"") %>"><%= s.phone %></a></span></span></div>
+        <div class="cline"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6l-10 7L2 6"/></svg></span><span><b>Email</b><span class="v"><a href="mailto:<%= s.email %>"><%= s.email %></a></span></span></div>
+        <div class="cline"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Timing</b><span class="v"><%= s.timings %><br><%= s.timings_extra %></span></span></div>
+        <div class="map" style="margin-top:6px"><iframe title="Location" width="100%" height="250" style="border:0;display:block" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=<%= encodeURIComponent(s.map_query) %>&output=embed"></iframe></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-card">
+      <a class="brand" href="/" style="margin-right:0">
+        <div class="mark"><svg width="21" height="21" viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5" rx="1.6" fill="#fff"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.6" fill="#fff" opacity=".55"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.6" fill="#fff" opacity=".55"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.6" fill="#fff"/></svg></div>
+        <div><b><%= s.institute_name %></b><span><%= s.city %></span></div>
+      </a>
+      <span class="msg">Aaiye, bachche ka safar shuru karte hain</span>
+      <a class="btn btn-navy" href="#" data-modal>Enroll Now <span class="sq">›</span></a>
+      <span class="fsoc">
+        <a href="<%= s.facebook || '#' %>" target="_blank" rel="noopener" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-9h3l.5-3.5h-3.5V7.3c0-1 .3-1.7 1.8-1.7H17V2.4C16.7 2.4 15.6 2.3 14.4 2.3c-2.6 0-4.4 1.6-4.4 4.5v2.7H7V13h3v9z"/></svg></a>
+        <a href="<%= s.instagram || '#' %>" target="_blank" rel="noopener" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></svg></a>
+        <a href="<%= s.youtube || '#' %>" target="_blank" rel="noopener" aria-label="YouTube"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.6-.5-5.3a2.7 2.7 0 0 0-1.9-1.9C18.9 4.3 12 4.3 12 4.3s-6.9 0-8.6.5A2.7 2.7 0 0 0 1.5 6.7C1 8.4 1 12 1 12s0 3.6.5 5.3a2.7 2.7 0 0 0 1.9 1.9c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9C23 15.6 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+      </span>
+    </div>
+
+    <div class="fgrid">
+      <div>
+        <h4>About Us</h4>
+        <p style="font-size:13.5px"><%= s.institute_name %> — <%= s.tagline %></p>
+      </div>
+      <div><h4>Top Courses</h4><ul>
+        <li><i>➤</i><a href="/courses">Class 9–10 Board</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Science</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Commerce</a></li>
+        <li><i>➤</i><a href="/courses">Class 11–12 Arts</a></li>
+        <li><i>➤</i><a href="/courses">Class 1–8 Foundation</a></li>
+      </ul></div>
+      <div><h4>Computer</h4><ul>
+        <li><i>➤</i><a href="/computer">MS Office</a></li>
+        <li><i>➤</i><a href="/computer">C, C++, Java</a></li>
+        <li><i>➤</i><a href="/computer">DBMS / SQL</a></li>
+        <li><i>➤</i><a href="/computer">Web Development</a></li>
+        <li><i>➤</i><a href="/computer">BCA Doubt Class</a></li>
+      </ul></div>
+      <div><h4>Get In Touch</h4><ul>
+        <li><i>📍</i><%= s.address_line2 %></li>
+        <li><i>✉️</i><a href="mailto:<%= s.email %>"><%= s.email %></a></li>
+        <li><i>📞</i><a href="tel:<%= s.phone.replace(/\s/g,"") %>"><%= s.phone %></a></li>
+        <li><i>🕒</i><%= s.timings %></li>
+      </ul></div>
+    </div>
+    <div class="fbot">© <%= year %> <%= s.institute_name.toUpperCase() %>, <%= s.city.toUpperCase() %> — Sabhi adhikar surakshit.</div>
+  </div>
+</footer>
+
+<!-- ================= FAQ ================= -->
+<section class="white">
+  <div class="wrap faq-wrap">
+    <div>
+      <h2 class="rv">Frequently Asked Questions</h2>
+      <p class="sub rv" style="text-align:left;margin-bottom:20px">Jo sawaal parents sabse zyada poochte hain</p>
+      <div class="rv">
+        <% faqs.forEach(function(f){ %>
+        <div class="acc"><button class="acc-q"><%= f.question %></button><div class="acc-a"><div><%= f.answer %></div></div></div>
+        <% }); %>
+      </div>
+    </div>
+    <div class="faq-art rv">
+      <%- include('../partials/photo',{slot:'faq1',cls:'p-c fa-1',label:'Doubt class'}) %>
+      <%- include('../partials/photo',{slot:'faq2',cls:'p-d fa-2',label:'Students'}) %>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

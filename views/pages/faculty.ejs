@@ -1,0 +1,89 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Faculty</span>
+      <h2 class="rv">Hamari Faculty</h2>
+      <p class="sub rv">Aapke bachche ko kaun padhayega</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FACULTY ================= -->
+<section id="faculty">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Hamari <em>Faculty</em></h2>
+      <p class="sub rv">Aapke bachche ko kaun padhayega</p>
+    </div>
+    <div class="g4">
+      <% faculty.forEach(function(f){ %>
+      <div class="card rv" style="text-align:center">
+        <div class="fav <%= f.theme %>"><% if(f.photo){ %><img src="/uploads/<%= f.photo %>" alt="<%= f.name %>" loading="lazy"><% } else { %><%= f.initials || f.name.slice(0,2).toUpperCase() %><% } %></div>
+        <h3><%= f.name %></h3><span class="tagline"><%= f.subject %></span><p><%= f.detail %></p>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="white">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Kyun Chunein <em>Pixel Skillz</em>?</h2>
+      <p class="sub rv">Jo cheezein hume alag banati hain</p>
+    </div>
+    <div class="tiles">
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="10.5" r="2"/><path d="M8.5 16c.6-1.9 2-2.8 3.5-2.8s2.9.9 3.5 2.8"/></svg></div><b>Batch me sirf 18 seat</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg></div><b>3D se padhai</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Har hafte test</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 16.5V16M14.5 8.6l-5.5 5.5M9 8.6h5.5v5.5"/></svg></div><b>Roz homework check</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="12" r="3.5"/><path d="M12 10v2l1.4.9"/></svg></div><b>Doubt class free</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M8 12.5h8M8 9.5h8M9.5 15.5h5"/></svg></div><b>Parents ko report</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section>
+  <div class="wrap tst-wrap">
+    <div>
+      <h2 class="rv">Our Testimonials</h2>
+      <p class="sub rv" style="text-align:left">Parents aur students kya kehte hain</p>
+      <div class="arrows rv" style="justify-content:flex-start;margin-top:14px"><button id="tPrev" aria-label="Pichla">‹</button><button id="tNext" aria-label="Agla">›</button></div>
+    </div>
+    <div class="track rv" id="tstTrack">
+      <% testimonials.forEach(function(t){ %>
+      <div class="tcard">
+        <div class="twho"><div class="tav <%= t.theme %>"><%= t.initials || t.name.slice(0,2).toUpperCase() %></div>
+        <div><b><%= t.name %></b><span><%= t.role %></span></div></div>
+        <p><%= t.quote %></p>
+        <div class="stars"><%= "★".repeat(t.stars) + "☆".repeat(5-t.stars) %></div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

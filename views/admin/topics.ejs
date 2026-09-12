@@ -1,0 +1,73 @@
+<%- include('_layout', {title:'3D Topics', nav:'topics'}) %>
+<div class="head"><h1>3D Learning Lab — Topics</h1>
+  <div class="right"><a class="btn btn-line" href="/3d-lab" target="_blank">Lab dekhein ↗</a></div>
+</div>
+
+<div class="card">
+  <h2>Naya topic jodein</h2>
+  <p style="color:var(--txt-2);font-size:13.5px;margin-bottom:16px">
+    Apni <b>.glb</b> file Sketchfab se download karein → Topic ka naam likhein → File chunein → Jodein.<br>
+    Parts, rotation — sab apne aap ho jaayega.
+  </p>
+  <form method="post" action="/admin/topics/save" enctype="multipart/form-data">
+    <input type="hidden" name="_csrf" value="<%= csrf %>">
+    <input type="hidden" name="id" value="0">
+    <input type="hidden" name="rot_x" value="0">
+    <input type="hidden" name="rot_y" value="0">
+    <input type="hidden" name="rot_z" value="0">
+    <div class="grid">
+      <div><label>Topic ka naam</label>
+        <input name="label" maxlength="60" required placeholder="jaise: Kidney, Solar System, Motor"></div>
+      <div><label>Subject</label>
+        <select name="subject">
+          <option>Biology</option><option>Computer</option><option>Chemistry</option>
+          <option>Physics</option><option>Science</option><option>Geography</option>
+        </select></div>
+      <div><label>3D model file (.glb) — max 40 MB</label>
+        <input type="file" name="model_file" accept=".glb,model/gltf-binary"></div>
+      <div><label>Saancha (file na ho to)</label>
+        <select name="builder">
+          <option value="glb">Apni .glb file (upar se chunein)</option>
+          <option value="layers">Parat-dar gola (Prithvi, pyaaz…)</option>
+          <option value="orbit">Chakkar wala (Solar system…)</option>
+          <option value="stack">Tah-dar (Mitti, layers…)</option>
+          <option value="heart">Dil (built-in)</option>
+          <option value="computer">Computer (built-in)</option>
+          <option value="cell">Cell (built-in)</option>
+          <option value="atom">Atom (built-in)</option>
+          <option value="eye">Aankh (built-in)</option>
+          <option value="lungs">Phephde (built-in)</option>
+          <option value="dna">DNA (built-in)</option>
+        </select></div>
+      <div><label>Kram (chhota pehle)</label><input name="sort" type="number" value="10"></div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <span class="chk"><input type="checkbox" name="active" checked id="nt">
+        <label for="nt" style="margin:0">Lab me dikhaayein</label></span>
+      <button class="btn btn-orange" type="submit">Jodein →</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Abhi ke topics (<%= rows.length %>)</h2>
+  <% if(!rows.length){ %><p>Abhi koi topic nahi. Upar se jodein.</p><% } %>
+  <table><thead><tr><th>Naam</th><th>Saancha</th><th>Parts</th><th>Dikh raha</th><th></th></tr></thead><tbody>
+  <% rows.forEach(function(r){ %>
+    <tr>
+      <td><b><a href="/admin/topics/<%= r.id %>"><%= r.label %></a></b></td>
+      <td class="tiny"><%= r.builder === 'glb' ? '📁 .glb file' : r.builder %></td>
+      <td><%= r.nparts %></td>
+      <td><%= r.active ? '✅ Haan' : '❌ Nahi' %></td>
+      <td>
+        <a class="btn btn-line btn-sm" href="/admin/topics/<%= r.id %>">Jaankari bharein</a>
+        <form method="post" action="/admin/topics/<%= r.id %>/delete" style="display:inline">
+          <input type="hidden" name="_csrf" value="<%= csrf %>">
+          <button class="btn btn-del btn-sm" onclick="return confirm('Poora topic delete kar dein?')">Delete</button>
+        </form>
+      </td>
+    </tr>
+  <% }); %>
+  </tbody></table>
+</div>
+<%- include('_end') %>

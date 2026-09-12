@@ -1,0 +1,33 @@
+<%- include('_layout', {title:'Dashboard', nav:'home'}) %>
+<div class="head"><h1>Dashboard</h1>
+  <div class="right"><a class="btn btn-line" href="/" target="_blank">Website dekhein ↗</a></div>
+</div>
+<% if (mustChange) { %>
+  <div class="msg warn"><b>Zaroori:</b> aap abhi tak pehla password use kar rahe hain.
+  <a href="/admin/password">Abhi badlein →</a></div>
+<% } %>
+<div class="stats">
+  <div class="stat"><b><%= counts.leadsTotal %></b><span>Kul enquiries</span></div>
+  <div class="stat"><b><%= counts.leadsDay %></b><span>Aaj</span></div>
+  <div class="stat"><b><%= counts.leadsWeek %></b><span>Is hafte</span></div>
+  <div class="stat"><b><%= counts.naya %></b><span>Jinse baat nahi hui</span></div>
+</div>
+<div class="card">
+  <div class="head"><h2>Nayi enquiries</h2>
+    <div class="right"><a class="btn btn-line btn-sm" href="/admin/leads">Sab dekhein</a>
+    <a class="btn btn-navy btn-sm" href="/admin/leads.csv">Excel download</a></div>
+  </div>
+  <% if (!recent.length) { %><p>Abhi koi enquiry nahi aayi.</p><% } else { %>
+  <table><thead><tr><th>Kab</th><th>Naam</th><th>Mobile</th><th>Course</th><th>Status</th></tr></thead><tbody>
+  <% recent.forEach(function(r){ %>
+    <tr>
+      <td class="num"><%= new Date(r.created_at).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'}) %></td>
+      <td><b><%= r.name %></b></td>
+      <td><a href="tel:+91<%= r.phone %>"><%= r.phone %></a></td>
+      <td><%= r.course %></td>
+      <td><span class="pill p-<%= r.status %>"><%= r.status.replace('_',' ') %></span></td>
+    </tr>
+  <% }); %>
+  </tbody></table><% } %>
+</div>
+<%- include('_end') %>

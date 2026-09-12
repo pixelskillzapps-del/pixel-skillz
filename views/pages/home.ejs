@@ -1,0 +1,194 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-card">
+      <div class="hero-bg hb1 on"></div>
+      <div class="hero-bg hb2"></div>
+      <div class="hero-bg hb3"></div>
+
+      <div class="trophy"><span>🏆</span><%= s.trophy_text %></div>
+
+      <div class="hero-in">
+        <div>
+          <div class="hslide on">
+            <h1>Ek Hi Jagah<br>Class 1 se 12 aur<br><span class="uline">Computer</span> Classes</h1>
+            <p>Science, Commerce aur Arts — teeno stream. Saath me <b>C, C++, Java, DBMS</b> aur Web Development.</p>
+          </div>
+          <div class="hslide">
+            <h1>Computer Classes<br><span class="uline">Practical</span> ke saath</h1>
+            <p>MS Office se lekar BCA ke semester subjects tak. Har class me lab time — sirf theory nahi.</p>
+          </div>
+          <div class="hslide">
+            <h1>Mushkil topic ko<br><span class="uline">kholkar</span> dikhate hain</h1>
+            <p>Dil, cell, atom aur computer ka <b>3D model</b> — ghumakar, kholkar, har part ka naam aur kaam.</p>
+          </div>
+          <div class="hero-cta">
+            <a class="btn btn-white" href="#" data-modal>Free Demo Class <span class="sq">›</span></a>
+            <a class="btn btn-navy" href="/courses">Courses Dekhein <span class="sq">›</span></a>
+          </div>
+        </div>
+
+        <div class="collage">
+          <%- include('../partials/photo',{slot:'hero1',cls:'p-a',label:'Classroom ki photo'}) %>
+          <%- include('../partials/photo',{slot:'hero2',cls:'p-b',label:'Students ki photo'}) %>
+          <%- include('../partials/photo',{slot:'hero3',cls:'p-c',label:'Computer lab'}) %>
+          <%- include('../partials/photo',{slot:'hero4',cls:'p-d',label:'Toppers ki photo'}) %>
+        </div>
+      </div>
+      <div class="hdots" id="hdots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHAT ARE YOU LOOKING FOR ================= -->
+<section>
+  <span class="blob l" style="top:20%"></span>
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Aap Kya Dhoondh Rahe Hain?</h2>
+      <p class="sub rv">Class 1 se 12, Computer, BCA aur bahut kuch</p>
+    </div>
+    <div class="tiles">
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 8l4 2.3v4.6L12 17l-4-2.1v-4.6z"/></svg></div><b>Class 1–5</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M8 12h8M12 8v8"/></svg></div><b>Class 6–8</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M20 9L12 12.8 4 9"/><path d="M12 12.8V21"/></svg></div><b>Class 9–10</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 15V9m3 6V11m3 4v-3"/></svg></div><b>Class 11–12</b></a>
+      <a class="tile rv" href="/computer"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><rect x="7.5" y="8.5" width="9" height="6" rx="1"/><path d="M10 17h4"/></svg></div><b>Computer Basics</b></a>
+      <a class="tile rv" href="/computer"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M14.5 9.5L17 12l-2.5 2.5M9.5 14.5L7 12l2.5-2.5"/></svg></div><b>C · C++ · Java</b></a>
+      <a class="tile rv" href="/computer"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><ellipse cx="12" cy="9.6" rx="4" ry="1.5"/><path d="M8 9.6v4.8c0 .8 1.8 1.5 4 1.5s4-.7 4-1.5V9.6"/></svg></div><b>DBMS &amp; SQL</b></a>
+      <a class="tile rv" href="/computer"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="12" r="4"/><path d="M8 12h8M12 8a9 9 0 0 1 0 8 9 9 0 0 1 0-8z"/></svg></div><b>Web Development</b></a>
+      <a class="tile rv" href="/3d-lab"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg></div><b>3D Learning Lab</b></a>
+      <a class="tile rv" href="/notes"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 9h6M9 12h6M9 15h3"/></svg></div><b>Free Notes</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULT BANNER 1 ================= -->
+<section id="results" style="padding-top:26px">
+  <div class="wrap">
+    <div class="rbanner rv">
+      <div class="rhead">
+        <span class="cnt"><%= s.banner1_count %></span>
+        <span class="txt"><%= s.banner1_text %></span>
+      </div>
+      <div class="rgrid">
+        <% boardToppers.forEach(function(t){ %>
+        <div class="rcard">
+          <div class="rpic <%= t.theme %>"><% if(t.photo){ %><img src="/uploads/<%= t.photo %>" alt="<%= t.name %>" loading="lazy"><% } else { %><%= t.name.split(" ").map(function(w){return w[0]}).join("").slice(0,2).toUpperCase() %><% } %></div>
+          <div class="rinfo"><b><%= t.name %></b><small><%= t.school %></small><span class="sel"><%= t.score %><% if(t.klass){ %> · <%= t.klass %><% } %></span></div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="rmore">aur bhi bahut saare…</div>
+    </div>
+    <p class="sub rv" style="text-align:center;margin-top:12px;font-size:12px;color:var(--txt-2)">Ye sample naam hain — apne asli toppers ke naam, school aur photo yahan bhar lein.</p>
+  </div>
+</section>
+
+<!-- ================= WHAT WE PROVIDE ================= -->
+<section id="provide">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Hum Kya <em>Dete</em> Hain</h2>
+      <p class="sub rv">Har student ki zaroorat ke liye alag program</p>
+    </div>
+    <div class="tiles">
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M8 10h8M8 13h5"/></svg></div><b>Regular Batch</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M13 7l-4 6h3l-1 5 4-6h-3z"/></svg></div><b>Crash Course</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Board Revision</b></a>
+      <a class="tile rv" href="/courses"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 16v.5M12 8a2 2 0 0 1 1 3.7c-.6.4-1 .8-1 1.6"/></svg></div><b>Doubt Batch</b></a>
+      <a class="tile rv" href="/computer"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><rect x="7.5" y="8.5" width="9" height="6" rx="1"/><path d="M10 17h4"/></svg></div><b>Computer Lab</b></a>
+      <a class="tile rv" href="/3d-lab"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg></div><b>3D Learning</b></a>
+      <a class="tile rv" href="/contact"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 9.5a1.8 1.8 0 1 0 0 3.6 1.8 1.8 0 0 0 0-3.6z"/><path d="M8.5 17c.5-1.8 1.9-2.7 3.5-2.7s3 .9 3.5 2.7"/></svg></div><b>Home Tuition</b></a>
+      <a class="tile rv" href="/contact"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 10h6M9 13h6M11 16h2"/></svg></div><b>Counselling</b></a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= POPULAR COURSES ================= -->
+<section class="white" id="courses">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Hamare <em>Popular</em> Courses</h2>
+      <p class="sub rv">Har stage ke student ke liye banaye gaye program</p>
+    </div>
+    <div class="carousel rv">
+      <div class="track" id="courseTrack">
+        <% courses.forEach(function(c){ %>
+        <div class="course">
+          <div class="cthumb <%= c.theme %>">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.4"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+            <div class="cbadges"><% if(c.badge1){ %><span class="cbadge"><%= c.badge1 %></span><% } %><% if(c.badge2){ %><span class="cbadge o"><%= c.badge2 %></span><% } %></div>
+          </div>
+          <div class="cbody"><h3><%= c.title %></h3>
+            <div class="cfoot"><span><%= c.meta1 %></span><span><%= c.meta2 %></span></div></div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="arrows"><button id="cPrev" aria-label="Pichla">‹</button><button id="cNext" aria-label="Agla">›</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE ================= -->
+<section class="white">
+  <div class="wrap">
+    <div class="sh">
+      <h2 class="rv">Kyun Chunein <em>Pixel Skillz</em>?</h2>
+      <p class="sub rv">Jo cheezein hume alag banati hain</p>
+    </div>
+    <div class="tiles">
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="10.5" r="2"/><path d="M8.5 16c.6-1.9 2-2.8 3.5-2.8s2.9.9 3.5 2.8"/></svg></div><b>Batch me sirf 18 seat</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 7l5 2.8v5.4L12 18l-5-2.8V9.8z"/></svg></div><b>3D se padhai</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M9 12l2 2 4-4"/></svg></div><b>Har hafte test</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M12 16.5V16M14.5 8.6l-5.5 5.5M9 8.6h5.5v5.5"/></svg></div><b>Roz homework check</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><circle cx="12" cy="12" r="3.5"/><path d="M12 10v2l1.4.9"/></svg></div><b>Doubt class free</b></div>
+      <div class="tile rv" style="width:150px"><div class="hx"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.3"><path d="M12 2l8.5 5v10L12 22 3.5 17V7z"/><path d="M8 12.5h8M8 9.5h8M9.5 15.5h5"/></svg></div><b>Parents ko report</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section>
+  <div class="wrap tst-wrap">
+    <div>
+      <h2 class="rv">Our Testimonials</h2>
+      <p class="sub rv" style="text-align:left">Parents aur students kya kehte hain</p>
+      <div class="arrows rv" style="justify-content:flex-start;margin-top:14px"><button id="tPrev" aria-label="Pichla">‹</button><button id="tNext" aria-label="Agla">›</button></div>
+    </div>
+    <div class="track rv" id="tstTrack">
+      <% testimonials.forEach(function(t){ %>
+      <div class="tcard">
+        <div class="twho"><div class="tav <%= t.theme %>"><%= t.initials || t.name.slice(0,2).toUpperCase() %></div>
+        <div><b><%= t.name %></b><span><%= t.role %></span></div></div>
+        <p><%= t.quote %></p>
+        <div class="stars"><%= "★".repeat(t.stars) + "☆".repeat(5-t.stars) %></div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA BAND ================= -->
+<section style="padding-top:20px">
+  <div class="wrap">
+    <div class="cta rv">
+      <div class="cta-side l"><%- include('../partials/photo',{slot:'ctaL',cls:'p-a',label:''}) %></div>
+      <div class="cta-side r"><%- include('../partials/photo',{slot:'ctaR',cls:'p-c',label:''}) %></div>
+      <h2>Pixel Skillz me har bachche ko alag se guide kiya jaata hai — doubt solving, stream selection aur planning ke saath.</h2>
+      <p>Ek demo class free hai. Bachche ko ek din baithaakar dekhiye, phir faisla kijiye.</p>
+      <a class="btn btn-white" href="#" data-modal>Get Started Now <span class="sq">›</span></a>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

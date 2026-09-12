@@ -1,0 +1,101 @@
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<main id="top">
+<section style="padding:44px 0 10px">
+  <div class="wrap">
+    <div class="sh">
+      <span class="kicker rv">Results</span>
+      <h2 class="rv">Hamare Results</h2>
+      <p class="sub rv">Bachchon ne kya kiya</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESULT BANNER 1 ================= -->
+<section id="results" style="padding-top:26px">
+  <div class="wrap">
+    <div class="rbanner rv">
+      <div class="rhead">
+        <span class="cnt"><%= s.banner1_count %></span>
+        <span class="txt"><%= s.banner1_text %></span>
+      </div>
+      <div class="rgrid">
+        <% boardToppers.forEach(function(t){ %>
+        <div class="rcard">
+          <div class="rpic <%= t.theme %>"><% if(t.photo){ %><img src="/uploads/<%= t.photo %>" alt="<%= t.name %>" loading="lazy"><% } else { %><%= t.name.split(" ").map(function(w){return w[0]}).join("").slice(0,2).toUpperCase() %><% } %></div>
+          <div class="rinfo"><b><%= t.name %></b><small><%= t.school %></small><span class="sel"><%= t.score %><% if(t.klass){ %> · <%= t.klass %><% } %></span></div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="rmore">aur bhi bahut saare…</div>
+    </div>
+    <p class="sub rv" style="text-align:center;margin-top:12px;font-size:12px;color:var(--txt-2)">Ye sample naam hain — apne asli toppers ke naam, school aur photo yahan bhar lein.</p>
+  </div>
+</section>
+
+<!-- ================= RESULT BANNER 2 ================= -->
+<section>
+  <div class="wrap">
+    <div class="rbanner rv">
+      <div class="rhead">
+        <span class="cnt"><%= s.banner2_count %></span>
+        <span class="txt"><%= s.banner2_text %></span>
+      </div>
+      <div class="rgrid">
+        <% compToppers.forEach(function(t){ %>
+        <div class="rcard">
+          <div class="rpic <%= t.theme %>"><% if(t.photo){ %><img src="/uploads/<%= t.photo %>" alt="<%= t.name %>" loading="lazy"><% } else { %><%= t.name.split(" ").map(function(w){return w[0]}).join("").slice(0,2).toUpperCase() %><% } %></div>
+          <div class="rinfo"><b><%= t.name %></b><small><%= t.school %></small><span class="sel"><%= t.score %><% if(t.klass){ %> · <%= t.klass %><% } %></span></div>
+        </div>
+        <% }); %>
+      </div>
+      <div class="rmore">aur bhi bahut saare…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section>
+  <div class="wrap tst-wrap">
+    <div>
+      <h2 class="rv">Our Testimonials</h2>
+      <p class="sub rv" style="text-align:left">Parents aur students kya kehte hain</p>
+      <div class="arrows rv" style="justify-content:flex-start;margin-top:14px"><button id="tPrev" aria-label="Pichla">‹</button><button id="tNext" aria-label="Agla">›</button></div>
+    </div>
+    <div class="track rv" id="tstTrack">
+      <% testimonials.forEach(function(t){ %>
+      <div class="tcard">
+        <div class="twho"><div class="tav <%= t.theme %>"><%= t.initials || t.name.slice(0,2).toUpperCase() %></div>
+        <div><b><%= t.name %></b><span><%= t.role %></span></div></div>
+        <p><%= t.quote %></p>
+        <div class="stars"><%= "★".repeat(t.stars) + "☆".repeat(5-t.stars) %></div>
+      </div>
+      <% }); %>
+    </div>
+  </div>
+</section>
+
+<!-- ================= LOGOS ================= -->
+<section class="white" style="padding-top:44px;padding-bottom:44px">
+  <div class="wrap">
+    <div class="sh" style="margin-bottom:24px">
+      <h2 class="rv" style="font-size:clamp(19px,2.4vw,26px)">Hamare Students In Schools Se Aate Hain</h2>
+      <p class="sub rv">Meerut aur aas-paas ke ilaake se</p>
+    </div>
+    <div class="logos">
+      <div class="logo-item rv"><i>🏫</i>St. Mary's Academy</div>
+      <div class="logo-item rv"><i>🏫</i>Dewan Public School</div>
+      <div class="logo-item rv"><i>🏫</i>Sophia Girls School</div>
+      <div class="logo-item rv"><i>🏫</i>K.L. International</div>
+      <div class="logo-item rv"><i>🏫</i>Meerut Public School</div>
+      <div class="logo-item rv"><i>🎓</i>CCS University</div>
+    </div>
+  </div>
+</section>
+</main>
+<%- include('../partials/footer') %>
+<%- include('../partials/modal') %>
+<%- include('../partials/floats') %>
+<script src="/js/site.js"></script>
+</body>
+</html>

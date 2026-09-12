@@ -1,0 +1,11 @@
+<%
+/* ek photo ki jagah — upload hui ho to photo, warna rangeen dabba */
+var _f = imgs[slot];
+%>
+<div class="photo <%= cls %>">
+  <% if (_f) { %>
+    <img src="/uploads/<%= _f %>" alt="<%= label %>" loading="lazy">
+  <% } else { %>
+    <%= label %><small>Admin → Website ki Photos me lagayein</small>
+  <% } %>
+</div>
