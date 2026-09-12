@@ -93,7 +93,7 @@ app.use(verifyCsrf);
 app.use('/css', express.static(path.join(__dirname, 'public/css'), { maxAge: '7d' }));
 app.use('/js',  express.static(path.join(__dirname, 'public/js'),  { maxAge: '7d' }));
 app.use('/img', express.static(path.join(__dirname, 'public/img'), { maxAge: '30d' }));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads'), {
+app.use('/uploads', express.static(path.join(__dirname, 'data/uploads'), {
   maxAge: '7d',
   setHeaders(res) {
     res.setHeader('X-Content-Type-Options', 'nosniff');
