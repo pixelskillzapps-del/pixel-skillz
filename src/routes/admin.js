@@ -12,7 +12,7 @@ const {
   csrfToken, wantsJson,
 } = require('../security');
 
-const UPLOAD_DIR = path.join(__dirname, '..', '..', 'public', 'uploads');
+const UPLOAD_DIR = path.join(__dirname, '..', '..', 'data', 'uploads');
 
 /* file memory me leke khud jaanchte hain, phir disk par likhte hain */
 const upload = multer({
